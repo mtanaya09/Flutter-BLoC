@@ -45,18 +45,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       state.connectionType == ConnectionType.Wifi) {
                     return const Text(
                       'Wi-Fi',
-                      style: TextStyle(color: Colors.green),
+                      style: TextStyle(color: Colors.green, fontSize: 30),
                     );
                   } else if (state is InternetConnected &&
                       state.connectionType == ConnectionType.Mobile) {
                     return const Text(
                       'Mobile',
-                      style: TextStyle(color: Colors.red),
+                      style: TextStyle(color: Colors.red, fontSize: 30),
                     );
                   } else if (state is InternetDisconnected) {
                     return const Text(
                       'Disconnected',
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: Colors.grey, fontSize: 30),
                     );
                   }
                   return Container();
