@@ -1,7 +1,4 @@
 import 'dart:convert';
-
-import 'package:equatable/equatable.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_concept/logic/cubit/internet_cubit.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
@@ -24,6 +21,25 @@ class CounterCubit extends Cubit<CounterState> with HydratedMixin {
 
   @override
   Map<String, dynamic> toJson(CounterState state) {
+    // addError(
+    //     Exception(
+    //       "Couldn't write to storage",
+    //     ),
+    //     StackTrace.current);
     return state.toMap();
   }
+
+  @override
+  void onChange(Change<CounterState> change) {
+    // print(
+    //     'current:  ${change.currentState.counterValue} next: ${change.nextState.counterValue}');
+    print(change);
+    super.onChange(change);
+  }
+
+  // @override
+  // void onError(Object error, StackTrace stackTrace) {
+  //   print("$error, $stackTrace");
+  //   super.onError(error, stackTrace);
+  // }
 }

@@ -30,6 +30,14 @@ class CounterState {
   factory CounterState.fromJson(String source) =>
       CounterState.fromMap(json.decode(source));
 
+
+
+  //* to debug the counterstate in console
+  @override
+  String toString() =>
+      'CounterState(counterValue: $counterValue, wasIcremented: $wasIncremented)';
+}
+
   // @override
   // List<Object?> get props => [counterValue, wasIncremented];
-}
+
