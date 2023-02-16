@@ -18,7 +18,7 @@ void main() {
     test(
         'The initial state for the CounterCubit is CounterState(counterValue: 0)',
         () {
-      expect(counterCubit?.state, CounterState(counterValue: 0));
+      expect(counterCubit?.state, const CounterState(counterValue: 0));
     });
 
     blocTest(

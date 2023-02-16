@@ -4,14 +4,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_concept/logic/cubit/counter_cubit.dart';
 import 'package:flutter_bloc_concept/logic/cubit/internet_cubit.dart';
 import 'package:flutter_bloc_concept/presentation/router/app_router.dart';
-import 'package:flutter_bloc_concept/presentation/screens/home_screen.dart';
-import 'package:flutter_bloc_concept/presentation/screens/second_screen.dart';
-import 'package:flutter_bloc_concept/presentation/screens/third_screen.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
-void main() {
-  // final CounterState counterState1 = CounterState(counterValue: 1);
-  // final CounterState counterState2 = CounterState(counterValue: 1);
-  // print(counterState1 == counterState2);
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  );
+
   runApp(MyApp(
     appRouter: AppRouter(),
     connectivity: Connectivity(),
@@ -36,8 +38,8 @@ class MyApp extends StatelessWidget {
           create: (context) => InternetCubit(connectivity: Connectivity()),
         ),
         BlocProvider<CounterCubit>(
-          create: (context) => CounterCubit(
-              internetCubit: context.read<InternetCubit>()),
+          create: (context) =>
+              CounterCubit(internetCubit: context.read<InternetCubit>()),
         ),
       ],
       child: MaterialApp(
